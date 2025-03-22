@@ -24,8 +24,12 @@ let UsersController = class UsersController {
     createUser(body) {
         return this.userService.create(body);
     }
-    findUser(id) {
-        return this.userService.findOne(parseInt(id));
+    async findUser(id) {
+        const user = await this.userService.findOne(parseInt(id));
+        if (!user) {
+            throw new common_1.NotFoundException('user not found');
+        }
+        return user;
     }
     updateUser(id, body) {
         return this.userService.update(parseInt(id), body);
@@ -50,7 +54,7 @@ __decorate([
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], UsersController.prototype, "findUser", null);
 __decorate([
     (0, common_1.Patch)('/:id'),
