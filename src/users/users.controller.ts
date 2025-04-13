@@ -8,6 +8,7 @@ import {
     Query,
     Delete,
     NotFoundException,
+    Session
 } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
