@@ -26,6 +26,9 @@ let UsersService = class UsersService {
         return this.repo.save(user);
     }
     async findOne(id) {
+        if (!id) {
+            throw new common_1.NotFoundException('user not found');
+        }
         return await this.repo.findOneBy({ id });
     }
     async find(email) {
