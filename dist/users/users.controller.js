@@ -25,6 +25,9 @@ let UsersController = class UsersController {
         this.userService = userService;
         this.authService = authService;
     }
+    getCurrentUser(session) {
+        return this.userService.findOne(session.userId);
+    }
     async createUser(body, session) {
         const user = await this.authService.signup(body.email, body.password);
         session.userId = user.id;
@@ -54,6 +57,13 @@ let UsersController = class UsersController {
     }
 };
 exports.UsersController = UsersController;
+__decorate([
+    (0, common_1.Get)('/current'),
+    __param(0, (0, common_1.Session)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], UsersController.prototype, "getCurrentUser", null);
 __decorate([
     (0, common_1.Post)('/signup'),
     __param(0, (0, common_1.Body)()),
