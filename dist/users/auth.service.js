@@ -32,6 +32,7 @@ let AuthService = class AuthService {
             password: result
         };
         const user = await this.usersService.create(credentials);
+        return user;
     }
     async signin(email, password) {
         const [user] = await this.usersService.find(email);
