@@ -20,13 +20,14 @@ const users_service_1 = require("./users.service");
 const serialize_inteceptor_1 = require("../interceptors/serialize.inteceptor");
 const user_dto_1 = require("./dtos/user.dto");
 const auth_service_1 = require("./auth.service");
+const current_user_decorator_1 = require("./decorators/current-user.decorator");
 let UsersController = class UsersController {
     constructor(userService, authService) {
         this.userService = userService;
         this.authService = authService;
     }
-    getCurrentUser(session) {
-        return this.userService.findOne(session.userId);
+    getCurrentUser(user) {
+        return user;
     }
     signOut(session) {
         session.userId = null;
@@ -62,9 +63,9 @@ let UsersController = class UsersController {
 exports.UsersController = UsersController;
 __decorate([
     (0, common_1.Get)('/current'),
-    __param(0, (0, common_1.Session)()),
+    __param(0, (0, current_user_decorator_1.CurrentUser)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], UsersController.prototype, "getCurrentUser", null);
 __decorate([
