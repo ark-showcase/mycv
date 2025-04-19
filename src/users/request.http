@@ -3,7 +3,7 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-  "email": "asdfgh@asdf.com",
+  "email": "asdfgh1@asdf.com",
   "password": "asdf"
 }
 
@@ -12,18 +12,22 @@ POST http://localhost:3000/auth/signin
 Content-Type: application/json
 
 {
-  "email": "sasutytfguoyiguh@asdf.com",
-  "password": "asd"
+  "email": "asdfgh1@asdf.com",
+  "password": "asdf"
 }
 
+### signing out a user
+POST http://localhost:3000/auth/signout
+Content-Type: application/json
+
 ### Find a particular user with a given ID
-GET http://localhost:3000/auth/4
+GET http://localhost:3000/auth/6
 
 ### Find all users with a given email
 GET http://localhost:3000/auth?email=asdfg@asdf.com
 
 ### Delete a user with a given ID
-DELETE http://localhost:3000/auth/1
+DELETE http://localhost:3000/auth/4
 
 ### Update a user with a given ID
 PATCH http://localhost:3000/auth/2
